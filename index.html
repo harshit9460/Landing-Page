@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Certs Event</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./view/Logo.svg" alt="AI Certs Logo" width="90">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <video autoplay muted loop id="heroVideo">
+                <source src="./view/1118592_4k_Transfer_Stream_1280x720.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1>Welcome to the AI Certs Event</h1>
+                <p>Join us for an inspiring event on AI advancements and certifications.</p>
+                <div id="countdown" class="countdown"></div>
+                <button class="cta" onclick="redirectToRegistration()">Register Now</button>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h2>About the Event</h2>
+            <p>Learn about the latest trends and technologies in AI.</p>
+        </section>
+        <section id="schedule" class="schedule">
+            <h2>Event Schedule</h2>
+            <button class="collapsible">Day 1</button>
+            <div class="content">
+                <p>Schedule for Day 1...</p>
+            </div>
+            <button class="collapsible">Day 2</button>
+            <div class="content">
+                <p>Schedule for Day 2...</p>
+            </div>
+        </section>
+        <section id="speakers" class="speakers">
+            <h2>Speakers</h2>
+            <div class="tabs">
+                <button class="tablinks" onclick="openTab(event, 'Speaker1')">Speaker 1</button>
+                <button class="tablinks" onclick="openTab(event, 'Speaker2')">Speaker 2</button>
+            </div>
+            <div id="Speaker1" class="tabcontent">
+                <h3>Speaker 1</h3>
+                <p>Bio of Speaker 1...</p>
+            </div>
+            <div id="Speaker2" class="tabcontent">
+                <h3>Speaker 2</h3>
+                <p>Bio of Speaker 2...</p>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>Get in touch for more information about the event.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 AI Certs. All rights reserved.</p>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <script>
+        // Redirect to registration page function
+        function redirectToRegistration() {
+            window.location.href = "register.html";
+        }
+
+        // Countdown timer function
+        function startCountdown() {
+            var countdownElement = document.getElementById('countdown');
+            var countdownDate = new Date();
+            countdownDate.setHours(countdownDate.getHours() + 4); // Set the countdown time to 4 hours from now
+            
+            // Update the countdown every second
+            var countdownInterval = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = countdownDate - now;
+                
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                countdownElement.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+                
+                // If the countdown is finished, clear the interval
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+        
+        // Start the countdown when the page loads
+        window.onload = function() {
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
